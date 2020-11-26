@@ -1,3 +1,3 @@
-struct ConfettiSwiftUI {
-    var text = "Hello, World!"
+public struct ConfettiSwiftUI {
+    public var text = "Hello, World!"
 }
