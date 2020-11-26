@@ -70,7 +70,7 @@ ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
+ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
 ```
 
 #### Firework Configuration
@@ -82,7 +82,7 @@ ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
+ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
 ```
 
 #### Emoji Configuration
@@ -94,10 +94,10 @@ ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
+ConfettiCannon(counter: $counter5, emojis: ["❤️", "💙", "💚", "🧡"])
 ```
 
-#### Constant Configuration
+#### Endless Configuration
 
 <p float="center">
   <img src="./Gifs/constant.gif" width="300" />
@@ -107,6 +107,18 @@ Code:
 
 ```swift
 ConfettiCannon(counter: $counter6, num:1, emojis: ["💩"], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
+```
+
+#### Make-it-Rain Configuration
+
+<p float="center">
+  <img src="./Gifs/make-it-rain.gif" width="300" />
+</p>
+
+Code:
+
+```swift
+ConfettiCannon(counter: $counter7, num:1, emojis: ["💵", "💶", "💷", "💴"], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
 ```
 
 ### Parameters
