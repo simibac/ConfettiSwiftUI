@@ -1,12 +1,16 @@
 import XCTest
 @testable import ConfettiSwiftUI
 
+import SwiftUI
+
 final class ConfettiSwiftUITests: XCTestCase {
+    @State var counter = 0
+    
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-//        XCTAssertEqual(ConfettiSwiftUI(text: "Hello World").text, "Hello, World!")
+        ConfettiSwiftUI.ConfettiCannon(counter:$counter)
+        Button("Animation"){
+            self.counter += 1
+        }
     }
 
     static var allTests = [
