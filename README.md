@@ -1,4 +1,4 @@
-# ConfettiSwiftUI
+# :confetti_ball: ConfettiSwiftUI :confetti_ball:
 
 Swift package for displaying configurable confetti animation.
 
