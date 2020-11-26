@@ -15,7 +15,24 @@ public struct ConfettiCannon: View {
     @State var animate:[Bool] = []
     @State var finishedAnimationCouter = 0
     @State var firtAppear = false
+    @State var error = ""
     
+    /// renders configurable confetti animaiton
+    /// - Parameters:
+    ///   - counter: on any change of this variable the animation is run
+    ///   - num: amount of confettis
+    ///   - emojis: list of emojis
+    ///   - includeDefaultShapes: include default confetti shapes such as circle and square
+    ///   - colors: list of colors that is applied to the default shapes
+    ///   - confettiSize: size that confettis and emojis are scaled to
+    ///   - rainHeight: vertical distance that confettis pass
+    ///   - fadesOut: reduce opacity towards the end of the animation
+    ///   - opacity: maximum opacity that is reached during the animation
+    ///   - openingAngle: boundary that defines the opening angle in degrees
+    ///   - closingAngle: boundary that defines the opening angle in degrees
+    ///   - radius: explosion radius
+    ///   - repetitions: number of repetitions of the explosion
+    ///   - repetitionInterval: duration between the repetitions
     public init(counter:Binding<Int>,
          num:Int = 20,
          emojis:[String] = [String](),
