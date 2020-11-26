@@ -29,7 +29,7 @@ public struct ConfettiCannon: View {
     ///   - fadesOut: reduce opacity towards the end of the animation
     ///   - opacity: maximum opacity that is reached during the animation
     ///   - openingAngle: boundary that defines the opening angle in degrees
-    ///   - closingAngle: boundary that defines the opening angle in degrees
+    ///   - closingAngle: boundary that defines the closing angle in degrees
     ///   - radius: explosion radius
     ///   - repetitions: number of repetitions of the explosion
     ///   - repetitionInterval: duration between the repetitions
@@ -39,7 +39,7 @@ public struct ConfettiCannon: View {
          includeDefaultShapes:Bool = false,
          colors:[Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
          confettiSize:CGFloat = 10.0,
-         rainHeight: CGFloat = 600,
+         rainHeight: CGFloat = 600.0,
          fadesOut:Bool = true,
          opacity:Double = 1.0,
          openingAngle:Angle = .degrees(60),
