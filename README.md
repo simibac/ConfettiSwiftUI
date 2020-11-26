@@ -31,30 +31,11 @@ struct ContentView: View {
 }
 ```
 
-### Configuration
-
-### Parameters
-
-| parameter            | type         | description                                           | default                                                 |
-| -------------------- | ------------ | ----------------------------------------------------- | ------------------------------------------------------- |
-| counter              | Binding<Int> | on any change of this variable triggers the animation | 0                                                       |
-| num                  | Int          | amount of confettis                                   | 20                                                      |
-| emojis               | [String]     | list of emojis as strings                             | [String]()                                              |
-| includeDefaultShapes | Bool         | include default confetti shapes such as circle        | true                                                    |
-| colors               | [Color]      | list of colors applied to the default shapes          | [.blue, .red, .green, .yellow, .pink, .purple, .orange] |
-| confettiSize         | CGFloat      | size that confettis and emojis are scaled to          | 10.0                                                    |
-| rainHeight           | CGFloat      | vertical distance that confettis pass                 | 600.0                                                   |
-| fadesOut             | Bool         | size that confettis and emojis are scaled to          | true                                                    |
-| opacity              | Double       | maximum opacity during the animation                  | 1.0                                                     |
-| openingAngle         | Angle        | boundary that defines the opening angle in degrees    | Angle.degrees(60)                                       |
-| closingAngle         | Angle        | boundary that defines the closing angle in degrees    | Angle.degrees(120)                                      |
-| radius               | CGFloag      | explosion radius                                      | 300.0                                                   |
-| repetitions          | Int          | number of repetitions fo the explosion                | 0                                                       |
-| repetitionInterval   | Double       | duration between the repetitions                      | 1.0                                                     |
-
 ### Demo
 
 Added an example project, with **iOS** target: https://github.com/simibac/ConfettiSwiftUIDemo
+
+## Configurations
 
 #### Default Configuration
 
@@ -119,11 +100,30 @@ ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), clo
 #### Constant Configuration
 
 <p float="center">
-  <img src="./Gifs/heart.gif" width="300" />
+  <img src="./Gifs/constant.gif" width="300" />
 </p>
 
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter5, emojis: ["❤️", "💙", "💚", "🧡"])
+ConfettiCannon(counter: $counter6, num:1, emojis: ["💩"], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
 ```
+
+### Parameters
+
+| parameter            | type         | description                                           | default                                                 |
+| -------------------- | ------------ | ----------------------------------------------------- | ------------------------------------------------------- |
+| counter              | Binding<Int> | on any change of this variable triggers the animation | 0                                                       |
+| num                  | Int          | amount of confettis                                   | 20                                                      |
+| emojis               | [String]     | list of emojis as strings                             | [String]()                                              |
+| includeDefaultShapes | Bool         | include default confetti shapes such as circle        | true                                                    |
+| colors               | [Color]      | list of colors applied to the default shapes          | [.blue, .red, .green, .yellow, .pink, .purple, .orange] |
+| confettiSize         | CGFloat      | size that confettis and emojis are scaled to          | 10.0                                                    |
+| rainHeight           | CGFloat      | vertical distance that confettis pass                 | 600.0                                                   |
+| fadesOut             | Bool         | size that confettis and emojis are scaled to          | true                                                    |
+| opacity              | Double       | maximum opacity during the animation                  | 1.0                                                     |
+| openingAngle         | Angle        | boundary that defines the opening angle in degrees    | Angle.degrees(60)                                       |
+| closingAngle         | Angle        | boundary that defines the closing angle in degrees    | Angle.degrees(120)                                      |
+| radius               | CGFloag      | explosion radius                                      | 300.0                                                   |
+| repetitions          | Int          | number of repetitions fo the explosion                | 0                                                       |
+| repetitionInterval   | Double       | duration between the repetitions                      | 1.0                                                     |
