@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
+@available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 public struct ConfettiCannon: View {
     @Binding var counter:Int
     @StateObject private var confettiConfig:ConfettiConfig
@@ -106,7 +106,7 @@ public struct ConfettiCannon: View {
     }
 }
 
-@available(iOS 14.0, *)
+@available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 struct ConfettiContainer: View {
     @Binding var finishedAnimationCouter:Int
     @StateObject var confettiConfig:ConfettiConfig
@@ -129,7 +129,7 @@ struct ConfettiContainer: View {
     }
 }
 
-@available(iOS 14.0, *)
+@available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 struct Confetti: View{
     @State var location:CGPoint = CGPoint(x: 0, y: 0)
     @State var opacity:Double = 0.0
