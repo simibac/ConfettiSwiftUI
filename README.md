@@ -37,6 +37,14 @@ Added an example project, with **iOS** target: https://github.com/simibac/Confet
 
 ## Configurations
 
+You can use the configurator app in [demo project here](https://github.com/simibac/ConfettiSwiftUIDemo) to make your desired animation or get inspired by one of the many examples.
+
+<p float="center">
+  <img src="./Gifs/configurator.png" width="300" />
+  <img src="./Gifs/examples.png" width="300" />
+
+</p>
+
 #### Default Configuration
 
 <p float="center">
