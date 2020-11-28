@@ -132,7 +132,7 @@ struct ConfettiContainer: View {
 @available(iOS 14.0, *)
 struct Confetti: View{
     @State var location:CGPoint = CGPoint(x: 0, y: 0)
-    @State var opacity:Double = 1.0
+    @State var opacity:Double = 0.0
     @StateObject var confettiConfig:ConfettiConfig
 
     
