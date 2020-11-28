@@ -10,7 +10,7 @@ Find the [demo project here](https://github.com/simibac/ConfettiSwiftUIDemo).
 
 ### Installation:
 
-It requires iOS 14 and Xcode 11!
+It requires iOS 14 and Xcode 12!
 
 In Xcode go to `File -> Swift Packages -> Add Package Dependency` and paste in the repo's url: `https://github.com/simibac/ConfettiSwiftUI` and select master branch.
 
