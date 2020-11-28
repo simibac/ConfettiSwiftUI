@@ -10,7 +10,7 @@ import SwiftUI
 @available(iOS 14.0, *)
 public struct ConfettiCannon: View {
     @Binding var counter:Int
-    @ObservedObject var confettiConfig:ConfettiConfig
+    @StateObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
     @State var finishedAnimationCouter = 0
@@ -63,7 +63,7 @@ public struct ConfettiCannon: View {
             shapes.append(AnyView(Circle().frame(width: confettiSize, height: confettiSize, alignment: .center)))
         }
     
-        confettiConfig = ConfettiConfig(
+        _confettiConfig = StateObject(wrappedValue: ConfettiConfig(
             num: num,
             shapes: shapes,
             colors: colors,
@@ -76,7 +76,7 @@ public struct ConfettiCannon: View {
             radius: radius,
             repetitions: repetitions,
             repetitionInterval: repetitionInterval
-        )
+        ))
     }
 
     public var body: some View {
@@ -106,9 +106,10 @@ public struct ConfettiCannon: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct ConfettiContainer: View {
     @Binding var finishedAnimationCouter:Int
-    @ObservedObject var confettiConfig:ConfettiConfig
+    @StateObject var confettiConfig:ConfettiConfig
     @State var firstAppear = true
 
     var body: some View{
@@ -128,10 +129,11 @@ struct ConfettiContainer: View {
     }
 }
 
+@available(iOS 14.0, *)
 struct Confetti: View{
     @State var location:CGPoint = CGPoint(x: 0, y: 0)
     @State var opacity:Double = 1.0
-    @ObservedObject var confettiConfig:ConfettiConfig
+    @StateObject var confettiConfig:ConfettiConfig
 
     
     func getShape() -> AnyView {
@@ -149,9 +151,7 @@ struct Confetti: View{
 
     var body: some View{
         ConfettiView(shape:getShape(), color:getColor(), spinDirX: getSpinDirection(), spinDirZ: getSpinDirection())
-//            .frame(width: confettiConfig.confettiSize, height: confettiConfig.confettiSize, alignment: .center)
             .offset(x: location.x, y: location.y)
-//            .scaleEffect(movement.z)
             .opacity(opacity)
             .onAppear(){
                 withAnimation(Animation.timingCurve(0.61, 1, 0.88, 1, duration: confettiConfig.explosionAnimationDuration)) {
