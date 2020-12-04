@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum ConfettiType {
+public enum ConfettiType:CaseIterable {
     
     public enum Shape {
         case circle
@@ -35,6 +35,10 @@ public enum ConfettiType {
         default:
             return AnyView(Circle())
         }
+    }
+    
+    public static var allCases: [ConfettiType] {
+        return [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)]
     }
 }
 
