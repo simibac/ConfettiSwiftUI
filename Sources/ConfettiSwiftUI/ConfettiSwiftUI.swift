@@ -68,7 +68,7 @@ public struct ConfettiCannon: View {
     ///   - repetitionInterval: duration between the repetitions
     public init(counter:Binding<Int>,
          num:Int = 20,
-         confettis:[ConfettiType] = [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)],
+         confettis:[ConfettiType] = ConfettiType.allCases,
          colors:[Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
          confettiSize:CGFloat = 10.0,
          rainHeight: CGFloat = 600.0,

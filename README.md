@@ -102,7 +102,7 @@ ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), clo
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter5, emojis: ["❤️", "💙", "💚", "🧡"])
+ConfettiCannon(counter: $counter5, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
 ```
 
 #### Endless Configuration
@@ -114,7 +114,7 @@ ConfettiCannon(counter: $counter5, emojis: ["❤️", "💙", "💚", "🧡"])
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter6, num:1, emojis: ["💩"], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
+ConfettiCannon(counter: $counter6, num:1, confettis: [.text("💩")], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
 ```
 
 #### Make-it-Rain Configuration
@@ -126,7 +126,7 @@ ConfettiCannon(counter: $counter6, num:1, emojis: ["💩"], confettiSize: 20, re
 Code:
 
 ```swift
-ConfettiCannon(counter: $counter7, num:1, emojis: ["💵", "💶", "💷", "💴"], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
+ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
 ```
 
 ### Parameters
@@ -135,7 +135,7 @@ ConfettiCannon(counter: $counter7, num:1, emojis: ["💵", "💶", "💷", "💴
 | -------------------- | ------------ | ----------------------------------------------------- | ------------------------------------------------------- |
 | counter              | Binding<Int> | on any change of this variable triggers the animation | 0                                                       |
 | num                  | Int          | amount of confettis                                   | 20                                                      |
-| emojis               | [String]     | list of emojis as strings                             | [String]()                                              |
+| confettis               | [ConfettiType]     | list of shapes and text                             | [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)]                                             |
 | includeDefaultShapes | Bool         | include default confetti shapes such as circle        | true                                                    |
 | colors               | [Color]      | list of colors applied to the default shapes          | [.blue, .red, .green, .yellow, .pink, .purple, .orange] |
 | confettiSize         | CGFloat      | size that confettis and emojis are scaled to          | 10.0                                                    |
