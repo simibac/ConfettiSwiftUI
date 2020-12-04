@@ -7,6 +7,37 @@
 
 import SwiftUI
 
+public enum ConfettiType {
+    
+    public enum Shape {
+        case circle
+        case triangle
+        case square
+        case slimRectangle
+        case roundedCross
+    }
+
+    case shape(Shape)
+    case text(String)
+    
+    public var view:AnyView{
+        switch self {
+        case .shape(.square):
+            return AnyView(Rectangle())
+        case .shape(.triangle):
+            return AnyView(Triangle())
+        case .shape(.slimRectangle):
+            return AnyView(SlimRectangle())
+        case .shape(.roundedCross):
+            return AnyView(RoundedCross())
+        case let .text(text):
+            return AnyView(Text(text))
+        default:
+            return AnyView(Circle())
+        }
+    }
+}
+
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 public struct ConfettiCannon: View {
     @Binding var counter:Int
@@ -21,8 +52,6 @@ public struct ConfettiCannon: View {
     /// - Parameters:
     ///   - counter: on any change of this variable the animation is run
     ///   - num: amount of confettis
-    ///   - emojis: list of emojis
-    ///   - includeDefaultShapes: include default confetti shapes such as circle and square
     ///   - colors: list of colors that is applied to the default shapes
     ///   - confettiSize: size that confettis and emojis are scaled to
     ///   - rainHeight: vertical distance that confettis pass
@@ -35,8 +64,7 @@ public struct ConfettiCannon: View {
     ///   - repetitionInterval: duration between the repetitions
     public init(counter:Binding<Int>,
          num:Int = 20,
-         emojis:[String] = [String](),
-         includeDefaultShapes:Bool = false,
+         confettis:[ConfettiType] = [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)],
          colors:[Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
          confettiSize:CGFloat = 10.0,
          rainHeight: CGFloat = 600.0,
@@ -50,17 +78,17 @@ public struct ConfettiCannon: View {
          
     ) {
         self._counter = counter
-        
         var shapes = [AnyView]()
-        if(emojis.count > 0){
-            for emoji in emojis{
-                shapes.append(AnyView(Text("\(emoji)").font(.system(size: confettiSize))))
-            }
-        }
         
-        if includeDefaultShapes || emojis.count == 0{
-            shapes.append(AnyView(Rectangle().frame(width: confettiSize, height: confettiSize, alignment: .center)))
-            shapes.append(AnyView(Circle().frame(width: confettiSize, height: confettiSize, alignment: .center)))
+        for confetti in confettis{
+            for color in colors{
+                switch confetti {
+                case .shape(_):
+                    shapes.append(AnyView(confetti.view.foregroundColor(color).frame(width: confettiSize, height: confettiSize, alignment: .center)))
+                default:
+                    shapes.append(AnyView(confetti.view.foregroundColor(color).font(.system(size: confettiSize))))
+                }
+            }
         }
     
         _confettiConfig = StateObject(wrappedValue: ConfettiConfig(
@@ -115,7 +143,7 @@ struct ConfettiContainer: View {
     var body: some View{
         ZStack{
             ForEach(0...confettiConfig.num-1, id:\.self){_ in
-                Confetti(confettiConfig: confettiConfig)
+                ConfettiView(confettiConfig: confettiConfig)
             }
         }
         .onAppear(){
@@ -130,11 +158,10 @@ struct ConfettiContainer: View {
 }
 
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
-struct Confetti: View{
+struct ConfettiView: View{
     @State var location:CGPoint = CGPoint(x: 0, y: 0)
     @State var opacity:Double = 0.0
     @StateObject var confettiConfig:ConfettiConfig
-
     
     func getShape() -> AnyView {
         return confettiConfig.shapes.randomElement()!
@@ -150,7 +177,7 @@ struct Confetti: View{
     }
 
     var body: some View{
-        ConfettiView(shape:getShape(), color:getColor(), spinDirX: getSpinDirection(), spinDirZ: getSpinDirection())
+        ConfettiAnimationView(shape:getShape(), color:getColor(), spinDirX: getSpinDirection(), spinDirZ: getSpinDirection())
             .offset(x: location.x, y: location.y)
             .opacity(opacity)
             .onAppear(){
@@ -185,7 +212,7 @@ struct Confetti: View{
     
 }
 
-struct ConfettiView: View {
+struct ConfettiAnimationView: View {
     @State var shape: AnyView
     @State var color: Color
     @State var spinDirX: CGFloat
@@ -194,7 +221,6 @@ struct ConfettiView: View {
 
     
     @State var move = false
-//    @State var xSpeed = Double.random(in: 0.7...3)
     @State var xSpeed:Double = Double.random(in: 1...2)
 
     @State var zSpeed = Double.random(in: 1...2)
@@ -215,15 +241,6 @@ struct ConfettiView: View {
             }
     }
 }
-
-
-struct Movement{
-    var x: CGFloat
-    var y: CGFloat
-    var z: CGFloat
-    var opacity: Double
-}
-
 
 class ConfettiConfig: ObservableObject {
     internal init(num: Int, shapes: [AnyView], colors: [Color], confettiSize: CGFloat, rainHeight: CGFloat, fadesOut: Bool, opacity: Double, openingAngle:Angle, closingAngle:Angle, radius:CGFloat, repetitions:Int, repetitionInterval:Double) {
