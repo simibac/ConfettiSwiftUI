@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum ConfettiType:CaseIterable {
+public enum ConfettiType:CaseIterable, Hashable {
     
     public enum Shape {
         case circle
