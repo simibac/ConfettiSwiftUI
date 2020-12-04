@@ -136,7 +136,6 @@ ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶
 | counter              | Binding<Int> | on any change of this variable triggers the animation | 0                                                       |
 | num                  | Int          | amount of confettis                                   | 20                                                      |
 | confettis               | [ConfettiType]     | list of shapes and text                             | [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)]                                             |
-| includeDefaultShapes | Bool         | include default confetti shapes such as circle        | true                                                    |
 | colors               | [Color]      | list of colors applied to the default shapes          | [.blue, .red, .green, .yellow, .pink, .purple, .orange] |
 | confettiSize         | CGFloat      | size that confettis and emojis are scaled to          | 10.0                                                    |
 | rainHeight           | CGFloat      | vertical distance that confettis pass                 | 600.0                                                   |
