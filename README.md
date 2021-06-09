@@ -14,7 +14,7 @@ It requires iOS 14 and Xcode 12!
 
 In Xcode go to `File -> Swift Packages -> Add Package Dependency` and paste in the repo's url: `https://github.com/simibac/ConfettiSwiftUI` and select master branch.
 
-### Usage:
+### Usage
 
 Import the package in the file you would like to use it: `import ConfettiSwiftUI`
 
@@ -51,7 +51,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
   <img src="./Gifs/default.gif" width="300" />
 </p>
 
-Code:
+Code
 
 ```swift
 ConfettiCannon(counter: $counter1)
@@ -146,3 +146,9 @@ ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶
 | radius               | CGFloat      | explosion radius                                      | 300.0                                                   |
 | repetitions          | Int          | number of repetitions for the explosion               | 0                                                       |
 | repetitionInterval   | Double       | duration between the repetitions                      | 1.0                                                     |
+  
+  
+## Projects
+The following projects have integrated ConfettiSwiftUI in their App.
+  
+- [Basic Code](https://basiccode.de) avaiable on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
