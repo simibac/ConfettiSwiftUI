@@ -151,4 +151,4 @@ ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶
 ## Projects
 The following projects have integrated ConfettiSwiftUI in their App.
   
-- [Basic Code](https://basiccode.de) avaiable on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
+- [Basic Code](https://basiccode.de) avaliable on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
