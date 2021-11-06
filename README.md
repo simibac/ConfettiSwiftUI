@@ -26,7 +26,9 @@ This is an open-source library to use with SwiftUI. It allows you to create and 
 - Configure the radius and angles of the explosion.
 - Trigger animation with one state change multiple times.
 
-#### If you like the project, don't forget to `put star 🌟`.
+## 🔨Support 
+
+If you like the project, don't forget to `put star 🌟`.
 
  <a href="https://brianmacdonald.github.io/Ethonate/address#0xCBa97323b4cA2fF9330827faF306065da7aA338F">
    <img src="https://brianmacdonald.github.io/Ethonate/svg/eth-donate-blue.svg"/>
@@ -38,6 +40,7 @@ This is an open-source library to use with SwiftUI. It allows you to create and 
 
 - [🌄 Example](#---example)
 - [🔭 Overview](#---overview)
+- [🔨 Support](#---overview)
 - [🧭 Navigation](#navigation)
 - [💻 Installation](#---installation)
   - [Swift Package Manager](#swift-package-manager)
