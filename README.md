@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/PLATFORM-IOS%20|%20MACOS-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/LICENSE-MIT-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/MADE WITH-SWIFTUI-orange?style=for-the-badge" />
 
-### Customized Confetti Animations in SwiftUI
+### Customizable Confetti Animations in SwiftUI
 
 <p align="center">
   <img src="./Gifs/native_default_iphone.png" width="200" width="480"/>
@@ -28,17 +28,25 @@ This is an open-source library to use with SwiftUI. It allows you to create and 
 
 #### If you like the project, don't forget to `put star 🌟`.
 
-<a href="mailto:simibac2@icloud.com"><img src="https://img.shields.io/badge/EMAIL-ELAI-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/simon-bachmann-73b695151/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/donate?business=6H8D2EDR6LBX6&no_recurring=0&item_name=Thanks+for+supporting+open+source+contributions%21&currency_code=CHF" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a>
+<a href="mailto:simibac2@icloud.com"><img src="https://img.shields.io/badge/EMAIL-SIMON-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/simon-bachmann-73b695151/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/donate?business=6H8D2EDR6LBX6&no_recurring=0&item_name=Thanks+for+supporting+open+source+contributions%21&currency_code=CHF" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a>
 
-## Navigation
+## 🧭 Navigation
 
-- [Installation](#-installation)
+- [🌄 Example](#---example)
+- [🔭 Overview](#---overview)
+- [🧭 Navigation](#navigation)
+- [💻 Installation](#---installation)
   - [Swift Package Manager](#swift-package-manager)
-- [Usage](#-usage)
-- [Article](#-article)
-- [Contributing](#-contributing)
-- [Author](#-author)
-- [License](#-license)
+  - [Manually](#manually)
+- [🧳 Requirements](#---requirements)
+- [🛠 Usage](#---usage)
+  - [Parameters](#parameters)
+  - [Configurator Application With Live Preview](#configurator-application-with-live-preview)
+  - [Examples](#examples)
+- [👨‍💻 Contributors](#------contributors)
+- [✍️ Author](#---author)
+- [📃 License](#---license)
+- [Projects](#projects)
 
 ## 💻 Installation
 
@@ -118,8 +126,6 @@ You can use the configurator app in [demo project here](https://github.com/simib
   <img src="./Gifs/color.gif" width="150" />
 </p>
 
-Code:
-
 ```swift
 ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
 ```
@@ -129,8 +135,6 @@ ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
 <p align="center">
   <img src="./Gifs/repeat.gif" width="150" />
 </p>
-
-Code:
 
 ```swift
 ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
@@ -142,8 +146,6 @@ ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
   <img src="./Gifs/explosion.gif" width="150" />
 </p>
 
-Code:
-
 ```swift
 ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
 ```
@@ -153,8 +155,6 @@ ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), clo
 <p align="center">
   <img src="./Gifs/heart.gif" width="150" />
 </p>
-
-Code:
 
 ```swift
 ConfettiCannon(counter: $counter5, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
@@ -166,8 +166,6 @@ ConfettiCannon(counter: $counter5, confettis: [.text("❤️"), .text("💙"), .
   <img src="./Gifs/constant.gif" width="150" />
 </p>
 
-Code:
-
 ```swift
 ConfettiCannon(counter: $counter6, num:1, confettis: [.text("💩")], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
 ```
@@ -178,8 +176,6 @@ ConfettiCannon(counter: $counter6, num:1, confettis: [.text("💩")], confettiSi
   <img src="./Gifs/make-it-rain.gif" width="150" />
 </p>
 
-Code:
-
 ```swift
 ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
 ```
@@ -187,8 +183,6 @@ ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶
 ## 👨‍💻 Contributors
 
 All issue reports, feature requests, pull requests and GitHub stars are welcomed and much appreciated.
-
-- [@simibac](https://github.com/simibac)
 
 ## ✍️ Author
 
@@ -202,7 +196,7 @@ Simon Bachmann
 
 The following projects have integrated ConfettiSwiftUI in their App.
 
-- [Basic Code](https://basiccode.de) avaliable on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
+- [Basic Code](https://basiccode.de) available on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
 
 ---
 
