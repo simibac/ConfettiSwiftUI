@@ -38,22 +38,18 @@ If you like the project, don't forget to `put star 🌟`.
 
 ## 🧭 Navigation
 
-- [🌄 Example](#---example)
-- [🔭 Overview](#---overview)
-- [🔨 Support](#---overview)
-- [🧭 Navigation](#navigation)
-- [💻 Installation](#---installation)
+- [💻 Installation](#-installation)
   - [Swift Package Manager](#swift-package-manager)
   - [Manually](#manually)
-- [🧳 Requirements](#---requirements)
-- [🛠 Usage](#---usage)
+- [🧳 Requirements](#-requirements)
+- [🛠 Usage](#-usage)
   - [Parameters](#parameters)
   - [Configurator Application With Live Preview](#configurator-application-with-live-preview)
   - [Examples](#examples)
-- [👨‍💻 Contributors](#------contributors)
-- [✍️ Author](#---author)
-- [📃 License](#---license)
-- [Projects](#projects)
+- [👨‍💻 Contributors](#-contributors)
+- [✍️ Author](#-author)
+- [📃 License](#-license)
+- [📦 Projects](#-projects)
 
 ## 💻 Installation
 
@@ -199,7 +195,7 @@ Simon Bachmann
 
 `ConfettiSwiftUI` is available under the MIT license. See the [LICENSE](https://github.com/simibac/ConfettiSwiftUI/blob/master/LICENSE) file for more info.
 
-## Projects
+## 📦 Projects
 
 The following projects have integrated ConfettiSwiftUI in their App.
 
