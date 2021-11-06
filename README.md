@@ -28,7 +28,11 @@ This is an open-source library to use with SwiftUI. It allows you to create and 
 
 #### If you like the project, don't forget to `put star 🌟`.
 
-<a href="mailto:simibac2@icloud.com"><img src="https://img.shields.io/badge/EMAIL-SIMON-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/simon-bachmann-73b695151/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/donate?business=6H8D2EDR6LBX6&no_recurring=0&item_name=Thanks+for+supporting+open+source+contributions%21&currency_code=CHF" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a>
+ <a href="https://brianmacdonald.github.io/Ethonate/address#0xCBa97323b4cA2fF9330827faF306065da7aA338F">
+   <img src="https://brianmacdonald.github.io/Ethonate/svg/eth-donate-blue.svg"/>
+ </a>
+
+<!-- <a href="mailto:simibac2@icloud.com"><img src="https://img.shields.io/badge/EMAIL-SIMON-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/simon-bachmann-73b695151/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/donate?business=6H8D2EDR6LBX6&no_recurring=0&item_name=Thanks+for+supporting+open+source+contributions%21&currency_code=CHF" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a> -->
 
 ## 🧭 Navigation
 
