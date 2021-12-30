@@ -124,13 +124,13 @@ public struct ConfettiCannon: View {
             firtAppear = true
         }
         .onChange(of: counter){value in
-            if firtAppear{
-                for i in 0...confettiConfig.repetitions{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
-                        animate.append(false)
-                        if(value < animate.count){
-                            animate[value-1].toggle()
-                        }
+            guard firtAppear else { return }
+
+            for i in 0...confettiConfig.repetitions{
+                DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
+                    animate.append(false)
+                    if(value < animate.count){
+                        animate[value-1].toggle()
                     }
                 }
             }
