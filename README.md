@@ -96,21 +96,22 @@ struct ContentView: View {
 
 ### Parameters
 
-| parameter          | type           | description                                           | default                                                                                              |
-| ------------------ | -------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| counter            | Binding<Int>   | on any change of this variable triggers the animation | 0                                                                                                    |
-| num                | Int            | amount of confettis                                   | 20                                                                                                   |
-| confettis          | [ConfettiType] | list of shapes and text                               | [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)] |
-| colors             | [Color]        | list of colors applied to the default shapes          | [.blue, .red, .green, .yellow, .pink, .purple, .orange]                                              |
-| confettiSize       | CGFloat        | size that confettis and emojis are scaled to          | 10.0                                                                                                 |
-| rainHeight         | CGFloat        | vertical distance that confettis pass                 | 600.0                                                                                                |
-| fadesOut           | Bool           | size that confettis and emojis are scaled to          | true                                                                                                 |
-| opacity            | Double         | maximum opacity during the animation                  | 1.0                                                                                                  |
-| openingAngle       | Angle          | boundary that defines the opening angle in degrees    | Angle.degrees(60)                                                                                    |
-| closingAngle       | Angle          | boundary that defines the closing angle in degrees    | Angle.degrees(120)                                                                                   |
-| radius             | CGFloat        | explosion radius                                      | 300.0                                                                                                |
-| repetitions        | Int            | number of repetitions for the explosion               | 0                                                                                                    |
-| repetitionInterval | Double         | duration between the repetitions                      | 1.0                                                                                                  |
+| parameter             | type           | description                                             | default                                                                                              |
+| --------------------- | -------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| counter               | Binding<Int>   | on any change of this variable triggers the animation   | 0                                                                                                    |
+| num                   | Int            | amount of confettis                                     | 20                                                                                                   |
+| confettis             | [ConfettiType] | list of shapes and text                                 | [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)] |
+| colors                | [Color]        | list of colors applied to the default shapes            | [.blue, .red, .green, .yellow, .pink, .purple, .orange]                                              |
+| confettiSize          | CGFloat        | size that confettis and emojis are scaled to            | 10.0                                                                                                 |
+| rainHeight            | CGFloat        | vertical distance that confettis pass                   | 600.0                                                                                                |
+| fadesOut              | Bool           | size that confettis and emojis are scaled to            | true                                                                                                 |
+| opacity               | Double         | maximum opacity during the animation                    | 1.0                                                                                                  |
+| openingAngle          | Angle          | boundary that defines the opening angle in degrees      | Angle.degrees(60)                                                                                    |
+| closingAngle          | Angle          | boundary that defines the closing angle in degrees      | Angle.degrees(120)                                                                                   |
+| radius                | CGFloat        | explosion radius                                        | 300.0                                                                                                |
+| repetitions           | Int            | number of repetitions for the explosion                 | 0                                                                                                    |
+| repetitionInterval    | Double         | duration between the repetitions                        | 1.0                                                                                                  |
+| ignoreCounterDecrease | Bool           | option to skip the animation when the counter decreases | false                                                                                                |
 
 ### Configurator Application With Live Preview
 
