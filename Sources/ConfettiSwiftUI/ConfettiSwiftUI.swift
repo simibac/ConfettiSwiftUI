@@ -79,7 +79,6 @@ public struct ConfettiCannon: View {
          radius:CGFloat = 300,
          repetitions:Int = 0,
          repetitionInterval:Double = 1.0
-         
     ) {
         self._counter = counter
         var shapes = [AnyView]()
@@ -179,13 +178,33 @@ struct ConfettiView: View{
         let spinDirections:[CGFloat] = [-1.0, 1.0]
         return spinDirections.randomElement()!
     }
+    
+    func getRandomExplosionTimeVariation() -> CGFloat {
+         CGFloat((0...999).randomElement()!) / 2100
+    }
+    
+    func getAnimationDuration() -> CGFloat {
+        return 0.2 + confettiConfig.explosionAnimationDuration + getRandomExplosionTimeVariation()
+    }
+    
+    func getAnimation() -> Animation {
+        return Animation.timingCurve(0, 1, 0, 1, duration: getAnimationDuration())
+    }
+    
+    func getDistance() -> CGFloat {
+        return pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiConfig.radius
+    }
+    
+    func getDelayBeforeRainAnimation() -> TimeInterval {
+        confettiConfig.explosionAnimationDuration *  0.1
+    }
 
     var body: some View{
         ConfettiAnimationView(shape:getShape(), color:getColor(), spinDirX: getSpinDirection(), spinDirZ: getSpinDirection())
             .offset(x: location.x, y: location.y)
             .opacity(opacity)
             .onAppear(){
-                withAnimation(Animation.timingCurve(0.61, 1, 0.88, 1, duration: confettiConfig.explosionAnimationDuration)) {
+                withAnimation(getAnimation()) {
                     opacity = confettiConfig.opacity
                     
                     let randomAngle:CGFloat
@@ -195,13 +214,13 @@ struct ConfettiView: View{
                         randomAngle = CGFloat.random(in: CGFloat(confettiConfig.openingAngle.degrees)...CGFloat(confettiConfig.closingAngle.degrees + 360)).truncatingRemainder(dividingBy: 360)
                     }
                     
-                    let distance = CGFloat.random(in: 0.5...1) * confettiConfig.radius
+                    let distance = getDistance()
                     
                     location.x = distance * cos(deg2rad(randomAngle))
                     location.y = -distance * sin(deg2rad(randomAngle))
                 }
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.explosionAnimationDuration) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + getDelayBeforeRainAnimation()) {
                     withAnimation(Animation.timingCurve(0.12, 0, 0.39, 0, duration: confettiConfig.rainAnimationDuration)) {
                         location.y += confettiConfig.rainHeight
                         opacity = confettiConfig.fadesOut ? 0 : confettiConfig.opacity
@@ -225,9 +244,9 @@ struct ConfettiAnimationView: View {
 
     
     @State var move = false
-    @State var xSpeed:Double = Double.random(in: 1...2)
+    @State var xSpeed:Double = Double.random(in: 0.501...2.201)
 
-    @State var zSpeed = Double.random(in: 1...2)
+    @State var zSpeed = Double.random(in: 0.501...2.201)
     @State var anchor = CGFloat.random(in: 0...1).rounded()
     
     var body: some View {
@@ -260,7 +279,7 @@ class ConfettiConfig: ObservableObject {
         self.radius = radius
         self.repetitions = repetitions
         self.repetitionInterval = repetitionInterval
-        self.explosionAnimationDuration = Double(radius / 1500)
+        self.explosionAnimationDuration = Double(radius / 1400)
         self.rainAnimationDuration = Double((rainHeight + radius) / 200)
     }
     
