@@ -78,8 +78,7 @@ public struct ConfettiCannon: View {
          closingAngle:Angle = .degrees(120),
          radius:CGFloat = 300,
          repetitions:Int = 0,
-         repetitionInterval:Double = 1.0,
-         realisticPhysics: Bool = false
+         repetitionInterval:Double = 1.0
     ) {
         self._counter = counter
         var shapes = [AnyView]()
@@ -107,8 +106,7 @@ public struct ConfettiCannon: View {
             closingAngle: closingAngle,
             radius: radius,
             repetitions: repetitions,
-            repetitionInterval: repetitionInterval,
-            realisticPhysics: realisticPhysics
+            repetitionInterval: repetitionInterval
         ))
     }
 
@@ -186,31 +184,19 @@ struct ConfettiView: View{
     }
     
     func getAnimationDuration() -> CGFloat {
-        if confettiConfig.realisticPhysics {
-            return 0.2 + confettiConfig.explosionAnimationDuration + getRandomExplosionTimeVariation()
-        } else {
-            return confettiConfig.explosionAnimationDuration
-        }
+        return 0.2 + confettiConfig.explosionAnimationDuration + getRandomExplosionTimeVariation()
     }
     
     func getAnimation() -> Animation {
-        if confettiConfig.realisticPhysics {
-            return Animation.timingCurve(0, 1, 0, 1, duration: getAnimationDuration())
-        } else {
-            return Animation.timingCurve(0.61, 1, 0.88, 1, duration: getAnimationDuration())
-        }
+        return Animation.timingCurve(0, 1, 0, 1, duration: getAnimationDuration())
     }
     
     func getDistance() -> CGFloat {
-        if confettiConfig.realisticPhysics {
-            return pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiConfig.radius
-        } else {
-            return CGFloat.random(in: 0.5...1) * confettiConfig.radius
-        }
+        return pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiConfig.radius
     }
     
     func getDelayBeforeRainAnimation() -> TimeInterval {
-        confettiConfig.explosionAnimationDuration * (confettiConfig.realisticPhysics ? 0.1 : 1)
+        confettiConfig.explosionAnimationDuration *  0.1
     }
 
     var body: some View{
@@ -280,7 +266,7 @@ struct ConfettiAnimationView: View {
 }
 
 class ConfettiConfig: ObservableObject {
-    internal init(num: Int, shapes: [AnyView], colors: [Color], confettiSize: CGFloat, rainHeight: CGFloat, fadesOut: Bool, opacity: Double, openingAngle:Angle, closingAngle:Angle, radius:CGFloat, repetitions:Int, repetitionInterval:Double, realisticPhysics:Bool) {
+    internal init(num: Int, shapes: [AnyView], colors: [Color], confettiSize: CGFloat, rainHeight: CGFloat, fadesOut: Bool, opacity: Double, openingAngle:Angle, closingAngle:Angle, radius:CGFloat, repetitions:Int, repetitionInterval:Double) {
         self.num = num
         self.shapes = shapes
         self.colors = colors
@@ -293,8 +279,7 @@ class ConfettiConfig: ObservableObject {
         self.radius = radius
         self.repetitions = repetitions
         self.repetitionInterval = repetitionInterval
-        self.realisticPhysics = realisticPhysics
-        self.explosionAnimationDuration = Double(radius / (realisticPhysics ? 1400 : 1500))
+        self.explosionAnimationDuration = Double(radius / 1400)
         self.rainAnimationDuration = Double((rainHeight + radius) / 200)
     }
     
@@ -310,7 +295,6 @@ class ConfettiConfig: ObservableObject {
     @Published var radius:CGFloat
     @Published var repetitions:Int
     @Published var repetitionInterval:Double
-    @Published var realisticPhysics:Bool
     @Published var explosionAnimationDuration:Double
     @Published var rainAnimationDuration:Double
 
