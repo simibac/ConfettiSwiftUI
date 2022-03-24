@@ -79,19 +79,21 @@ If you prefer not to use any of dependency managers, you can integrate `Confetti
 First, add `import ConfettiSwiftUI` on every `swift` file you would like to use `ConfettiSwiftUI`. Define a integer as a state varable which is responsible for triggering the animation. Any change to that variable will span a new animation (increment and decrement).
 
 ```swift
+
 import SwiftUI
-import ConfettiSwiftUI
 
 struct ContentView: View {
-    @State var counter:Int = 0
-
+    
+    @State private var counter: Int = 0
+    
     var body: some View {
-        ZStack{
-            Text("🎉").font(.system(size: 50)).onTapGesture(){counter += 1}
-            ConfettiCannon(counter: $counter)
+        Button("🎉") {
+            counter += 1
         }
+        .confettiCannon(counter: $counter)
     }
 }
+
 ```
 
 ### Parameters
