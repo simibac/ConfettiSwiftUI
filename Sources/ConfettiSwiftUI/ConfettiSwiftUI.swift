@@ -48,7 +48,7 @@ public struct ConfettiCannon: View {
     @StateObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
-    @State var finishedAnimationCouter = 0
+    @State var finishedAnimationCounter = 0
     @State var firtAppear = false
     @State var error = ""
     
@@ -112,9 +112,9 @@ public struct ConfettiCannon: View {
 
     public var body: some View {
         ZStack{
-            ForEach(finishedAnimationCouter..<animate.count, id:\.self){ i in
+            ForEach(finishedAnimationCounter..<animate.count, id:\.self){ i in
                 ConfettiContainer(
-                    finishedAnimationCouter: $finishedAnimationCouter,
+                    finishedAnimationCounter: $finishedAnimationCounter,
                     confettiConfig: confettiConfig
                 )
             }
@@ -139,7 +139,7 @@ public struct ConfettiCannon: View {
 
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 struct ConfettiContainer: View {
-    @Binding var finishedAnimationCouter:Int
+    @Binding var finishedAnimationCounter:Int
     @StateObject var confettiConfig:ConfettiConfig
     @State var firstAppear = true
 
@@ -152,7 +152,7 @@ struct ConfettiContainer: View {
         .onAppear(){
             if firstAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.animationDuration) {
-                    self.finishedAnimationCouter += 1
+                    self.finishedAnimationCounter += 1
                 }
                 firstAppear = false
             }
