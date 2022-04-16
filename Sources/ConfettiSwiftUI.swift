@@ -19,6 +19,7 @@ public enum ConfettiType:CaseIterable, Hashable {
 
     case shape(Shape)
     case text(String)
+    case sfSymbol(symbolName: String)
     
     public var view:AnyView{
         switch self {
@@ -32,6 +33,8 @@ public enum ConfettiType:CaseIterable, Hashable {
             return AnyView(RoundedCross())
         case let .text(text):
             return AnyView(Text(text))
+        case .sfSymbol(let symbolName):
+            return AnyView(Image(systemName: symbolName))
         default:
             return AnyView(Circle())
         }
@@ -48,8 +51,8 @@ public struct ConfettiCannon: View {
     @StateObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
-    @State var finishedAnimationCouter = 0
-    @State var firtAppear = false
+    @State var finishedAnimationCounter = 0
+    @State var firstAppear = false
     @State var error = ""
     
     /// renders configurable confetti animaiton
@@ -112,18 +115,18 @@ public struct ConfettiCannon: View {
 
     public var body: some View {
         ZStack{
-            ForEach(finishedAnimationCouter..<animate.count, id:\.self){ i in
+            ForEach(finishedAnimationCounter..<animate.count, id:\.self){ i in
                 ConfettiContainer(
-                    finishedAnimationCouter: $finishedAnimationCouter,
+                    finishedAnimationCounter: $finishedAnimationCounter,
                     confettiConfig: confettiConfig
                 )
             }
         }
         .onAppear(){
-            firtAppear = true
+            firstAppear = true
         }
         .onChange(of: counter){value in
-            if firtAppear{
+            if firstAppear{
                 for i in 0...confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
@@ -139,7 +142,7 @@ public struct ConfettiCannon: View {
 
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 struct ConfettiContainer: View {
-    @Binding var finishedAnimationCouter:Int
+    @Binding var finishedAnimationCounter:Int
     @StateObject var confettiConfig:ConfettiConfig
     @State var firstAppear = true
 
@@ -152,7 +155,7 @@ struct ConfettiContainer: View {
         .onAppear(){
             if firstAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.animationDuration) {
-                    self.finishedAnimationCouter += 1
+                    self.finishedAnimationCounter += 1
                 }
                 firstAppear = false
             }
