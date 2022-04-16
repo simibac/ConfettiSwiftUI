@@ -52,7 +52,7 @@ public struct ConfettiCannon: View {
 
     @State var animate:[Bool] = []
     @State var finishedAnimationCounter = 0
-    @State var firtAppear = false
+    @State var firstAppear = false
     @State var error = ""
     
     /// renders configurable confetti animaiton
