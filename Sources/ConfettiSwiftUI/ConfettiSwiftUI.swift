@@ -19,6 +19,7 @@ public enum ConfettiType:CaseIterable, Hashable {
 
     case shape(Shape)
     case text(String)
+    case sfSymbol(symbolName: String)
     
     public var view:AnyView{
         switch self {
@@ -32,6 +33,8 @@ public enum ConfettiType:CaseIterable, Hashable {
             return AnyView(RoundedCross())
         case let .text(text):
             return AnyView(Text(text))
+        case .sfSymbol(let symbolName):
+            return AnyView(Image(systemName: symbolName))
         default:
             return AnyView(Circle())
         }
@@ -48,8 +51,8 @@ public struct ConfettiCannon: View {
     @StateObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
-    @State var finishedAnimationCouter = 0
-    @State var firstAppear = false
+    @State var finishedAnimationCounter = 0
+    @State var firtAppear = false
     @State var error = ""
     
     /// renders configurable confetti animaiton
@@ -79,7 +82,6 @@ public struct ConfettiCannon: View {
          radius:CGFloat = 300,
          repetitions:Int = 0,
          repetitionInterval:Double = 1.0
-         
     ) {
         self._counter = counter
         var shapes = [AnyView]()
@@ -113,9 +115,9 @@ public struct ConfettiCannon: View {
 
     public var body: some View {
         ZStack{
-            ForEach(finishedAnimationCouter..<animate.count, id:\.self){ i in
+            ForEach(finishedAnimationCounter..<animate.count, id:\.self){ i in
                 ConfettiContainer(
-                    finishedAnimationCouter: $finishedAnimationCouter,
+                    finishedAnimationCounter: $finishedAnimationCounter,
                     confettiConfig: confettiConfig
                 )
             }
@@ -140,7 +142,7 @@ public struct ConfettiCannon: View {
 
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 struct ConfettiContainer: View {
-    @Binding var finishedAnimationCouter:Int
+    @Binding var finishedAnimationCounter:Int
     @StateObject var confettiConfig:ConfettiConfig
     @State var firstAppear = true
 
@@ -153,7 +155,7 @@ struct ConfettiContainer: View {
         .onAppear(){
             if firstAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.animationDuration) {
-                    self.finishedAnimationCouter += 1
+                    self.finishedAnimationCounter += 1
                 }
                 firstAppear = false
             }
@@ -179,13 +181,33 @@ struct ConfettiView: View{
         let spinDirections:[CGFloat] = [-1.0, 1.0]
         return spinDirections.randomElement()!
     }
+    
+    func getRandomExplosionTimeVariation() -> CGFloat {
+         CGFloat((0...999).randomElement()!) / 2100
+    }
+    
+    func getAnimationDuration() -> CGFloat {
+        return 0.2 + confettiConfig.explosionAnimationDuration + getRandomExplosionTimeVariation()
+    }
+    
+    func getAnimation() -> Animation {
+        return Animation.timingCurve(0, 1, 0, 1, duration: getAnimationDuration())
+    }
+    
+    func getDistance() -> CGFloat {
+        return pow(CGFloat.random(in: 0.01...1), 2.0/7.0) * confettiConfig.radius
+    }
+    
+    func getDelayBeforeRainAnimation() -> TimeInterval {
+        confettiConfig.explosionAnimationDuration *  0.1
+    }
 
     var body: some View{
         ConfettiAnimationView(shape:getShape(), color:getColor(), spinDirX: getSpinDirection(), spinDirZ: getSpinDirection())
             .offset(x: location.x, y: location.y)
             .opacity(opacity)
             .onAppear(){
-                withAnimation(Animation.timingCurve(0.61, 1, 0.88, 1, duration: confettiConfig.explosionAnimationDuration)) {
+                withAnimation(getAnimation()) {
                     opacity = confettiConfig.opacity
                     
                     let randomAngle:CGFloat
@@ -195,13 +217,13 @@ struct ConfettiView: View{
                         randomAngle = CGFloat.random(in: CGFloat(confettiConfig.openingAngle.degrees)...CGFloat(confettiConfig.closingAngle.degrees + 360)).truncatingRemainder(dividingBy: 360)
                     }
                     
-                    let distance = CGFloat.random(in: 0.5...1) * confettiConfig.radius
+                    let distance = getDistance()
                     
                     location.x = distance * cos(deg2rad(randomAngle))
                     location.y = -distance * sin(deg2rad(randomAngle))
                 }
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.explosionAnimationDuration) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + getDelayBeforeRainAnimation()) {
                     withAnimation(Animation.timingCurve(0.12, 0, 0.39, 0, duration: confettiConfig.rainAnimationDuration)) {
                         location.y += confettiConfig.rainHeight
                         opacity = confettiConfig.fadesOut ? 0 : confettiConfig.opacity
@@ -225,9 +247,9 @@ struct ConfettiAnimationView: View {
 
     
     @State var move = false
-    @State var xSpeed:Double = Double.random(in: 1...2)
+    @State var xSpeed:Double = Double.random(in: 0.501...2.201)
 
-    @State var zSpeed = Double.random(in: 1...2)
+    @State var zSpeed = Double.random(in: 0.501...2.201)
     @State var anchor = CGFloat.random(in: 0...1).rounded()
     
     var body: some View {
@@ -260,7 +282,7 @@ class ConfettiConfig: ObservableObject {
         self.radius = radius
         self.repetitions = repetitions
         self.repetitionInterval = repetitionInterval
-        self.explosionAnimationDuration = Double(radius / 1500)
+        self.explosionAnimationDuration = Double(radius / 1400)
         self.rainAnimationDuration = Double((rainHeight + radius) / 200)
     }
     
