@@ -123,10 +123,10 @@ public struct ConfettiCannon: View {
             }
         }
         .onAppear(){
-            firtAppear = true
+            firstAppear = true
         }
         .onChange(of: counter){value in
-            if firtAppear{
+            if firstAppear{
                 for i in 0...confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
