@@ -191,7 +191,7 @@ struct ConfettiView: View{
     }
     
     func getAnimation() -> Animation {
-        return Animation.timingCurve(0, 1, 0, 1, duration: getAnimationDuration())
+        return Animation.timingCurve(0.1, 0.8, 0, 1, duration: getAnimationDuration())
     }
     
     func getDistance() -> CGFloat {
@@ -282,7 +282,7 @@ class ConfettiConfig: ObservableObject {
         self.radius = radius
         self.repetitions = repetitions
         self.repetitionInterval = repetitionInterval
-        self.explosionAnimationDuration = Double(radius / 1400)
+        self.explosionAnimationDuration = Double(radius / 1300)
         self.rainAnimationDuration = Double((rainHeight + radius) / 200)
     }
     
