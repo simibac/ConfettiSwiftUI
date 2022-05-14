@@ -79,7 +79,7 @@ If you prefer not to use any of dependency managers, you can integrate `Confetti
 First, add `import ConfettiSwiftUI` on every `swift` file you would like to use `ConfettiSwiftUI`. Define a integer as a state varable which is responsible for triggering the animation. Any change to that variable will span a new animation (increment and decrement).
 
 ```swift
-
+import ConfettiSwiftUI
 import SwiftUI
 
 struct ContentView: View {
@@ -132,7 +132,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 </p>
 
 ```swift
-ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
+.confettiCannon(counter: $counter, colors: [.red, .black], confettiSize: 20)
 ```
 
 #### Repeat Configuration
@@ -142,7 +142,7 @@ ConfettiCannon(counter: $counter2, colors: [.red, .black], confettiSize: 20)
 </p>
 
 ```swift
-ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
+.confettiCannon(counter: $counter, repetitions: 3, repetitionInterval: 0.7)
 ```
 
 #### Firework Configuration
@@ -152,7 +152,7 @@ ConfettiCannon(counter: $counter3, repetitions: 3, repetitionInterval: 0.7)
 </p>
 
 ```swift
-ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
+.confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
 ```
 
 #### Emoji Configuration
@@ -162,7 +162,7 @@ ConfettiCannon(counter: $counter4, num: 50, openingAngle: Angle(degrees: 0), clo
 </p>
 
 ```swift
-ConfettiCannon(counter: $counter5, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
+.confettiCannon(counter: $counter, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
 ```
 
 #### Endless Configuration
@@ -172,7 +172,7 @@ ConfettiCannon(counter: $counter5, confettis: [.text("❤️"), .text("💙"), .
 </p>
 
 ```swift
-ConfettiCannon(counter: $counter6, num:1, confettis: [.text("💩")], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
+.confettiCannon(counter: $counter, num:1, confettis: [.text("💩")], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
 ```
 
 #### Make-it-Rain Configuration
@@ -182,7 +182,7 @@ ConfettiCannon(counter: $counter6, num:1, confettis: [.text("💩")], confettiSi
 </p>
 
 ```swift
-ConfettiCannon(counter: $counter7, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
+.confettiCannon(counter: $counter, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
 ```
 
 ## 👨‍💻 Contributors
