@@ -255,9 +255,9 @@ struct ConfettiAnimationView: View {
     var body: some View {
         shape
             .foregroundColor(color)
-            .rotation3DEffect(.degrees(move ? 360:0), axis: (x: spinDirX, y: 0, z: 0))
+            .rotation3DEffect(.degrees(move ? 360:0), axis: (x: 0, y: 0, z: 0))
             .animation(Animation.linear(duration: xSpeed).repeatCount(10, autoreverses: false), value: move)
-            .rotation3DEffect(.degrees(move ? 360:0), axis: (x: 0, y: 0, z: spinDirZ), anchor: UnitPoint(x: anchor, y: anchor))
+            .rotation3DEffect(.degrees(move ? 360:0), axis: (x: 0, y: 0, z: 0), anchor: UnitPoint(x: anchor, y: anchor))
             .animation(Animation.linear(duration: zSpeed).repeatForever(autoreverses: false), value: move)
             .onAppear() {
                 if firstAppear {
