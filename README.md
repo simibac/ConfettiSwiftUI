@@ -185,6 +185,16 @@ You can use the configurator app in [demo project here](https://github.com/simib
 .confettiCannon(counter: $counter, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
 ```
 
+
+
+<p align="center">
+  <img src="https://github.com/simibac/ConfettiSwiftUI/assets/15369592/c4c7c28a-c8cc-4d17-bd5c-240ce5cb4dcb" width="150" />
+</p>
+
+```swift
+.confettiCannon(counter: $counter8, confettis: [.image("arb"), .image("eth"), .image("btc"), .image("op"), .image("link"), .image("doge")], confettiSize: 20)
+```
+
 ## 👨‍💻 Contributors
 
 All issue reports, feature requests, pull requests and GitHub stars are welcomed and much appreciated.
