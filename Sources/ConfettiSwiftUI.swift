@@ -20,6 +20,7 @@ public enum ConfettiType:CaseIterable, Hashable {
     case shape(Shape)
     case text(String)
     case sfSymbol(symbolName: String)
+    case image(String)
     
     public var view:AnyView{
         switch self {
@@ -35,6 +36,8 @@ public enum ConfettiType:CaseIterable, Hashable {
             return AnyView(Text(text))
         case .sfSymbol(let symbolName):
             return AnyView(Image(systemName: symbolName))
+        case .image(let image):
+            return AnyView(Image(image).resizable())
         default:
             return AnyView(Circle())
         }
@@ -91,6 +94,8 @@ public struct ConfettiCannon: View {
                 switch confetti {
                 case .shape(_):
                     shapes.append(AnyView(confetti.view.foregroundColor(color).frame(width: confettiSize, height: confettiSize, alignment: .center)))
+                case .image(_):
+                    shapes.append(AnyView(confetti.view.frame(maxWidth:confettiSize, maxHeight: confettiSize)))
                 default:
                     shapes.append(AnyView(confetti.view.foregroundColor(color).font(.system(size: confettiSize))))
                 }
