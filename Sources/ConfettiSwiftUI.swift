@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum ConfettiType:CaseIterable, Hashable {
+public enum ConfettiType {
     
     public enum Shape {
         case circle
@@ -21,6 +21,7 @@ public enum ConfettiType:CaseIterable, Hashable {
     case text(String)
     case sfSymbol(symbolName: String)
     case image(String)
+    case view(AnyView)
     
     public var view:AnyView{
         switch self {
@@ -38,6 +39,8 @@ public enum ConfettiType:CaseIterable, Hashable {
             return AnyView(Image(systemName: symbolName))
         case .image(let image):
             return AnyView(Image(image).resizable())
+        case .view(let view):
+            return view
         default:
             return AnyView(Circle())
         }
