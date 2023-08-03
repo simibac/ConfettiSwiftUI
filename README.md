@@ -111,7 +111,7 @@ struct ContentView: View {
 | openingAngle       | Angle          | boundary that defines the opening angle in degrees    | Angle.degrees(60)                                                                                    |
 | closingAngle       | Angle          | boundary that defines the closing angle in degrees    | Angle.degrees(120)                                                                                   |
 | radius             | CGFloat        | explosion radius                                      | 300.0                                                                                                |
-| repetitions        | Int            | number of repetitions for the explosion               | 0                                                                                                    |
+| repetitions        | Int            | number of repetitions for the explosion               | 1                                                                                                    |
 | repetitionInterval | Double         | duration between the repetitions                      | 1.0                                                                                                  |
 
 ### Configurator Application With Live Preview
