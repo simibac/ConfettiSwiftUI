@@ -83,7 +83,7 @@ public struct ConfettiCannon: View {
          openingAngle:Angle = .degrees(60),
          closingAngle:Angle = .degrees(120),
          radius:CGFloat = 300,
-         repetitions:Int = 0,
+         repetitions:Int = 1,
          repetitionInterval:Double = 1.0
     ) {
         self._counter = counter
@@ -132,7 +132,7 @@ public struct ConfettiCannon: View {
         }
         .onChange(of: counter){value in
             if firstAppear{
-                for i in 0...confettiConfig.repetitions{
+                for i in 0..<confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
                         if(value > 0 && value < animate.count){
