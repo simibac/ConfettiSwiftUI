@@ -84,13 +84,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var counter: Int = 0
+    @State private var trigger: Int = 0
     
     var body: some View {
         Button("🎉") {
-            counter += 1
+            trigger += 1
         }
-        .confettiCannon(counter: $counter)
+        .confettiCannon(trigger: $trigger)
     }
 }
 
