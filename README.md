@@ -5,16 +5,16 @@
 ### Customizable Confetti Animations in SwiftUI
 
 <p align="center">
-  <img src="./Gifs/native_default_iphone.png" width="200" width="480"/>
+  <img src="./ConfettiSwiftUI/Gifs/native_default_iphone.png" width="200" width="480"/>
 </p>
 
 ## 🌄 Example
 
 <p align="center">
-  <img src="./Gifs/default.gif" width="150" />
-  <img src="./Gifs/make-it-rain.gif" width="150"/>
-  <img src="./Gifs/explosion.gif" width="150" />
-  <img src="./Gifs/color.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/default.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/make-it-rain.gif" width="150"/>
+  <img src="./ConfettiSwiftUI/Gifs/explosion.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/color.gif" width="150" />
 </p>
 
 ## 🔭 Overview
@@ -84,13 +84,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var counter: Int = 0
+    @State private var trigger: Int = 0
     
     var body: some View {
         Button("🎉") {
-            counter += 1
+            trigger += 1
         }
-        .confettiCannon(counter: $counter)
+        .confettiCannon(trigger: $trigger)
     }
 }
 
@@ -119,8 +119,8 @@ struct ContentView: View {
 You can use the configurator app in [demo project here](https://github.com/simibac/ConfettiSwiftUIDemo) to make your desired animation or get inspired by one of the many examples.
   
 <p align="center">
-   <img src="./Gifs/configurator.png" width="150" />
-   <img src="./Gifs/examples.png" width="150" />
+   <img src="./ConfettiSwiftUI/Gifs/configurator.png" width="150" />
+   <img src="./ConfettiSwiftUI/Gifs/examples.png" width="150" />
  </p>
 
 ### Examples
@@ -128,7 +128,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 #### Color and Size Configuration
 
 <p align="center">
-  <img src="./Gifs/color.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/color.gif" width="150" />
 </p>
 
 ```swift
@@ -138,7 +138,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 #### Repeat Configuration
 
 <p align="center">
-  <img src="./Gifs/repeat.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/repeat.gif" width="150" />
 </p>
 
 ```swift
@@ -148,7 +148,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 #### Firework Configuration
 
 <p align="center">
-  <img src="./Gifs/explosion.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/explosion.gif" width="150" />
 </p>
 
 ```swift
@@ -158,7 +158,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 #### Emoji Configuration
 
 <p align="center">
-  <img src="./Gifs/heart.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/heart.gif" width="150" />
 </p>
 
 ```swift
@@ -168,7 +168,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 #### Endless Configuration
 
 <p align="center">
-  <img src="./Gifs/constant.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/constant.gif" width="150" />
 </p>
 
 ```swift
@@ -178,7 +178,7 @@ You can use the configurator app in [demo project here](https://github.com/simib
 #### Make-it-Rain Configuration
 
 <p align="center">
-  <img src="./Gifs/make-it-rain.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/make-it-rain.gif" width="150" />
 </p>
 
 ```swift
