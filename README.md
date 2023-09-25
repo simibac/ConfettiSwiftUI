@@ -11,10 +11,10 @@
 ## 🌄 Example
 
 <p align="center">
-  <img src="./Gifs/default.gif" width="150" />
-  <img src="./Gifs/make-it-rain.gif" width="150"/>
-  <img src="./Gifs/explosion.gif" width="150" />
-  <img src="./Gifs/color.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/default.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/make-it-rain.gif" width="150"/>
+  <img src="./ConfettiSwiftUI/Gifs/explosion.gif" width="150" />
+  <img src="./ConfettiSwiftUI/Gifs/color.gif" width="150" />
 </p>
 
 ## 🔭 Overview
