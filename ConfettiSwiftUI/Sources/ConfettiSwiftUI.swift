@@ -49,8 +49,8 @@ public enum ConfettiType:CaseIterable, Hashable {
 }
 
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
-public struct ConfettiCannon: View {
-    @Binding var counter:Int
+public struct ConfettiCannon<T: Equatable>: View {
+    @Binding var trigger: T
     @StateObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
@@ -60,7 +60,7 @@ public struct ConfettiCannon: View {
     
     /// renders configurable confetti animaiton
     /// - Parameters:
-    ///   - counter: on any change of this variable the animation is run
+    ///   - trigger: on any change of this variable the animation is run
     ///   - num: amount of confettis
     ///   - colors: list of colors that is applied to the default shapes
     ///   - confettiSize: size that confettis and emojis are scaled to
@@ -72,7 +72,7 @@ public struct ConfettiCannon: View {
     ///   - radius: explosion radius
     ///   - repetitions: number of repetitions of the explosion
     ///   - repetitionInterval: duration between the repetitions
-    public init(counter:Binding<Int>,
+    public init(trigger:Binding<T>,
          num:Int = 20,
          confettis:[ConfettiType] = ConfettiType.allCases,
          colors:[Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
@@ -86,7 +86,7 @@ public struct ConfettiCannon: View {
          repetitions:Int = 0,
          repetitionInterval:Double = 1.0
     ) {
-        self._counter = counter
+        self._trigger = trigger
         var shapes = [AnyView]()
         
         for confetti in confettis{
@@ -130,14 +130,14 @@ public struct ConfettiCannon: View {
         .onAppear(){
             firstAppear = true
         }
-        .onChange(of: counter){value in
+        .onChange(of: trigger){value in
             if firstAppear{
                 for i in 0...confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
-                        if(value > 0 && value < animate.count){
-                            animate[value-1].toggle()
-                        }
+//                        if(value > 0 && value < animate.count){
+//                            animate[value-1].toggle()
+//                        }
                     }
                 }
             }
