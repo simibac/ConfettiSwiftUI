@@ -5,7 +5,7 @@
 ### Customizable Confetti Animations in SwiftUI
 
 <p align="center">
-  <img src="./Gifs/native_default_iphone.png" width="200" width="480"/>
+  <img src="./ConfettiSwiftUI/Gifs/native_default_iphone.png" width="200" width="480"/>
 </p>
 
 ## 🌄 Example
