@@ -9,7 +9,7 @@ import SwiftUI
 
 public extension View {
     
-    /// renders configurable confetti animaiton
+    /// renders configurable confetti animation
     ///
     /// - Usage:
     ///
