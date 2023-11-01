@@ -58,7 +58,7 @@ public struct ConfettiCannon: View {
     @State var firstAppear = false
     @State var error = ""
     
-    /// renders configurable confetti animaiton
+    /// renders configurable confetti animation
     /// - Parameters:
     ///   - counter: on any change of this variable the animation is run
     ///   - num: amount of confettis
