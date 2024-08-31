@@ -9,7 +9,7 @@ import SwiftUI
 
 public extension View {
     
-    /// renders configurable confetti animaiton
+    /// renders configurable confetti animation
     ///
     /// - Usage:
     ///
@@ -43,8 +43,8 @@ public extension View {
     ///   - repetitions: number of repetitions of the explosion
     ///   - repetitionInterval: duration between the repetitions
     ///
-    @ViewBuilder func confettiCannon(
-        counter: Binding<Int>,
+    @ViewBuilder func confettiCannon<T>(
+        trigger: Binding<T>,
         num: Int = 20,
         confettis: [ConfettiType] = ConfettiType.allCases,
         colors: [Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
@@ -57,11 +57,11 @@ public extension View {
         radius: CGFloat = 300,
         repetitions: Int = 0,
         repetitionInterval: Double = 1.0
-    ) -> some View {
+    ) -> some View where T: Equatable {
         ZStack {
             self
             ConfettiCannon(
-                counter: counter,
+                trigger: trigger,
                 num: num,
                 confettis: confettis,
                 colors: colors,
