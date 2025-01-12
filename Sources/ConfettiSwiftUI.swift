@@ -60,7 +60,7 @@ public struct ConfettiCannon<T: Equatable>: View {
     
     /// renders configurable confetti animation
     /// - Parameters:
-    ///   - counter: on any change of this variable the animation is run
+    ///   - trigger: on any change of this variable the animation is run
     ///   - num: amount of confettis
     ///   - colors: list of colors that is applied to the default shapes
     ///   - confettiSize: size that confettis and emojis are scaled to
