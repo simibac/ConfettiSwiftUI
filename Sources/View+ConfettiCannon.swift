@@ -9,7 +9,7 @@ import SwiftUI
 
 public extension View {
     
-    /// renders configurable confetti animaiton
+    /// renders configurable confetti animation
     ///
     /// - Usage:
     ///
@@ -56,7 +56,7 @@ public extension View {
         openingAngle: Angle = .degrees(60),
         closingAngle: Angle = .degrees(120),
         radius: CGFloat = 300,
-        repetitions: Int = 0,
+        repetitions: Int = 1,
         repetitionInterval: Double = 1.0,
 				hapticFeedback: Bool = true
     ) -> some View {
