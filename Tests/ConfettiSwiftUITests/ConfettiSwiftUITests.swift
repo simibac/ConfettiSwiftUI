@@ -4,12 +4,12 @@ import XCTest
 import SwiftUI
 
 final class ConfettiSwiftUITests: XCTestCase {
-    @State var counter = 0
-    
+    @State var trigger = false
+
     func testExample() {
-        ConfettiSwiftUI.ConfettiCannon(counter:$counter)
+        ConfettiSwiftUI.ConfettiCannon(trigger: $trigger)
         Button("Animation"){
-            self.counter += 1
+            self.trigger.toggle()
         }
     }
 

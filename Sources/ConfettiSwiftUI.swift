@@ -49,8 +49,8 @@ public enum ConfettiType:CaseIterable, Hashable {
 }
 
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
-public struct ConfettiCannon: View {
-    @Binding var counter:Int
+public struct ConfettiCannon<T: Equatable>: View {
+    @Binding var trigger: T
     @StateObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
@@ -74,7 +74,7 @@ public struct ConfettiCannon: View {
     ///   - repetitionInterval: duration between the repetitions
     ///   - hapticFeedback: play haptic feedback on explosion
 
-    public init(counter:Binding<Int>,
+    public init(trigger:Binding<T>,
          num:Int = 20,
          confettis:[ConfettiType] = ConfettiType.allCases,
          colors:[Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
@@ -89,7 +89,7 @@ public struct ConfettiCannon: View {
          repetitionInterval:Double = 1.0,
          hapticFeedback:Bool = true
     ) {
-        self._counter = counter
+        self._trigger = trigger
         var shapes = [AnyView]()
         
         for confetti in confettis{
@@ -134,13 +134,15 @@ public struct ConfettiCannon: View {
         .onAppear(){
             firstAppear = true
         }
-        .onChange(of: counter){value in
+        .onChange(of: trigger){value in
             if firstAppear{
                 for i in 0..<confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
-                        if(value > 0 && value < animate.count){
-                            animate[value-1].toggle()
+
+                        if confettiConfig.hapticFeedback {
+                            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
+                            impactFeedback.impactOccurred()
                         }
 
                         if confettiConfig.hapticFeedback {

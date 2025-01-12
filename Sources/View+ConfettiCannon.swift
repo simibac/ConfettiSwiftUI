@@ -44,8 +44,8 @@ public extension View {
     ///   - repetitionInterval: duration between the repetitions
     ///   - hapticFeedback: enable or disable haptic feedback
     ///
-    @ViewBuilder func confettiCannon(
-        counter: Binding<Int>,
+    @ViewBuilder func confettiCannon<T>(
+        trigger: Binding<T>,
         num: Int = 20,
         confettis: [ConfettiType] = ConfettiType.allCases,
         colors: [Color] = [.blue, .red, .green, .yellow, .pink, .purple, .orange],
@@ -59,11 +59,11 @@ public extension View {
         repetitions: Int = 1,
         repetitionInterval: Double = 1.0,
 				hapticFeedback: Bool = true
-    ) -> some View {
+    ) -> some View where T: Equatable {
         ZStack {
             self
             ConfettiCannon(
-                counter: counter,
+                trigger: trigger,
                 num: num,
                 confettis: confettis,
                 colors: colors,
