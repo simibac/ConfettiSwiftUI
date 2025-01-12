@@ -111,7 +111,7 @@ struct ContentView: View {
 | openingAngle       | Angle          | boundary that defines the opening angle in degrees    | Angle.degrees(60)                                                                                    |
 | closingAngle       | Angle          | boundary that defines the closing angle in degrees    | Angle.degrees(120)                                                                                   |
 | radius             | CGFloat        | explosion radius                                      | 300.0                                                                                                |
-| repetitions        | Int            | number of repetitions for the explosion               | 0                                                                                                    |
+| repetitions        | Int            | number of repetitions for the explosion               | 1                                                                                                    |
 | repetitionInterval | Double         | duration between the repetitions                      | 1.0                                                                                                  |
 
 ### Configurator Application With Live Preview
@@ -212,6 +212,7 @@ Simon Bachmann
 The following projects have integrated ConfettiSwiftUI in their App.
 
 - [Basic Code](https://basiccode.de) available on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
+- [AnyTracker](https://anytracker.org/) available on the [AppStore](https://apps.apple.com/app/anytracker-track-anything/id6450756953)
 
 ---
 

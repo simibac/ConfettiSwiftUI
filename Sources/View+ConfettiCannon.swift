@@ -42,6 +42,7 @@ public extension View {
     ///   - radius: explosion radius
     ///   - repetitions: number of repetitions of the explosion
     ///   - repetitionInterval: duration between the repetitions
+    ///   - hapticFeedback: enable or disable haptic feedback
     ///
     @ViewBuilder func confettiCannon<T>(
         trigger: Binding<T>,
@@ -55,8 +56,9 @@ public extension View {
         openingAngle: Angle = .degrees(60),
         closingAngle: Angle = .degrees(120),
         radius: CGFloat = 300,
-        repetitions: Int = 0,
-        repetitionInterval: Double = 1.0
+        repetitions: Int = 1,
+        repetitionInterval: Double = 1.0,
+				hapticFeedback: Bool = true
     ) -> some View where T: Equatable {
         ZStack {
             self
@@ -73,7 +75,8 @@ public extension View {
                 closingAngle: closingAngle,
                 radius: radius,
                 repetitions: repetitions,
-                repetitionInterval: repetitionInterval
+                repetitionInterval: repetitionInterval,
+                hapticFeedback: hapticFeedback
             )
         }
     }
