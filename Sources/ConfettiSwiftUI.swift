@@ -72,6 +72,8 @@ public struct ConfettiCannon: View {
     ///   - radius: explosion radius
     ///   - repetitions: number of repetitions of the explosion
     ///   - repetitionInterval: duration between the repetitions
+    ///   - hapticFeedback: play haptic feedback on explosion
+
     public init(counter:Binding<Int>,
          num:Int = 20,
          confettis:[ConfettiType] = ConfettiType.allCases,
@@ -84,7 +86,8 @@ public struct ConfettiCannon: View {
          closingAngle:Angle = .degrees(120),
          radius:CGFloat = 300,
          repetitions:Int = 1,
-         repetitionInterval:Double = 1.0
+         repetitionInterval:Double = 1.0,
+         hapticFeedback:Bool = true
     ) {
         self._counter = counter
         var shapes = [AnyView]()
@@ -114,7 +117,8 @@ public struct ConfettiCannon: View {
             closingAngle: closingAngle,
             radius: radius,
             repetitions: repetitions,
-            repetitionInterval: repetitionInterval
+            repetitionInterval: repetitionInterval,
+            hapticFeedback: hapticFeedback
         ))
     }
 
@@ -137,6 +141,11 @@ public struct ConfettiCannon: View {
                         animate.append(false)
                         if(value > 0 && value < animate.count){
                             animate[value-1].toggle()
+                        }
+
+                        if confettiConfig.hapticFeedback {
+                            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
+                            impactFeedback.impactOccurred()
                         }
                     }
                 }
@@ -274,7 +283,7 @@ struct ConfettiAnimationView: View {
 }
 
 class ConfettiConfig: ObservableObject {
-    internal init(num: Int, shapes: [AnyView], colors: [Color], confettiSize: CGFloat, rainHeight: CGFloat, fadesOut: Bool, opacity: Double, openingAngle:Angle, closingAngle:Angle, radius:CGFloat, repetitions:Int, repetitionInterval:Double) {
+    internal init(num: Int, shapes: [AnyView], colors: [Color], confettiSize: CGFloat, rainHeight: CGFloat, fadesOut: Bool, opacity: Double, openingAngle:Angle, closingAngle:Angle, radius:CGFloat, repetitions:Int, repetitionInterval:Double, hapticFeedback:Bool) {
         self.num = num
         self.shapes = shapes
         self.colors = colors
@@ -289,6 +298,7 @@ class ConfettiConfig: ObservableObject {
         self.repetitionInterval = repetitionInterval
         self.explosionAnimationDuration = Double(radius / 1300)
         self.rainAnimationDuration = Double((rainHeight + radius) / 200)
+        self.hapticFeedback = hapticFeedback
     }
     
     @Published var num:Int
@@ -305,6 +315,7 @@ class ConfettiConfig: ObservableObject {
     @Published var repetitionInterval:Double
     @Published var explosionAnimationDuration:Double
     @Published var rainAnimationDuration:Double
+    @Published var hapticFeedback:Bool
 
     
     var animationDuration:Double{
