@@ -26,14 +26,6 @@ This is an open-source library to use with SwiftUI. It allows you to create and 
 - Configure the radius and angles of the explosion.
 - Trigger animation with one state change multiple times.
 
-## 🔨Support 
-
-If you like the project, don't forget to `put star 🌟`.
-
- <a href="https://www.buymeacoffee.com/nwbbfqmp7qd" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
-<!-- <a href="mailto:simibac2@icloud.com"><img src="https://img.shields.io/badge/EMAIL-SIMON-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/simon-bachmann-73b695151/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/donate?business=6H8D2EDR6LBX6&no_recurring=0&item_name=Thanks+for+supporting+open+source+contributions%21&currency_code=CHF" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a> -->
-
 ## 🧭 Navigation
 
 - [💻 Installation](#-installation)
@@ -200,6 +192,14 @@ All issue reports, feature requests, pull requests and GitHub stars are welcomed
 ## ✍️ Author
 
 Simon Bachmann
+
+## 🔨Support 
+
+If you like the project, don't forget to `put star 🌟`.
+
+ <a href="https://www.buymeacoffee.com/nwbbfqmp7qd" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+<!-- <a href="mailto:simibac2@icloud.com"><img src="https://img.shields.io/badge/EMAIL-SIMON-informational?style=for-the-badge&logo=minutemailer&logoColor=white"></a>&nbsp;&nbsp;&nbsp;<a href="https://www.linkedin.com/in/simon-bachmann-73b695151/" target="_blank"><img src="https://img.shields.io/badge/LINKEDIN-informational?style=for-the-badge&logo=linkedin&logoColor=white" ></a>&nbsp;&nbsp;&nbsp;<a href="https://www.paypal.com/donate?business=6H8D2EDR6LBX6&no_recurring=0&item_name=Thanks+for+supporting+open+source+contributions%21&currency_code=CHF" target="_blank"><img src="https://img.shields.io/badge/Donate-informational?style=for-the-badge&logo=paypal&logoColor=white" ></a> -->
 
 ## 📃 License
 
