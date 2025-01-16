@@ -1,14 +1,21 @@
 # ConfettiSwiftUI
 
-<img src="https://img.shields.io/badge/PLATFORM-IOS%20|%20MACOS-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/LICENSE-MIT-lightgray?style=for-the-badge" />&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/MADE WITH-SWIFTUI-orange?style=for-the-badge" />
+![GitHub License](https://img.shields.io/github/license/simibac/ConfettiSwiftUI?logo=github)
+![Cocoapods platforms](https://img.shields.io/cocoapods/p/AFNetworking?logo=apple)
 
-### Customizable Confetti Animations in SwiftUI
 
 <p align="center">
   <img src="./Gifs/native_default_iphone.png" width="200" width="480"/>
 </p>
 
-## 🌄 Example
+Customize confetti animations.
+
+- All elements are built with pure SwiftUI.
+- Select from default confetti shapes, emojis, SF Symbols or text.
+- Trigger the animation with one state change multiple times with a haptic feed back on each explosion.
+
+
+## 🌄 Examples
 
 <p align="center">
   <img src="./Gifs/default.gif" width="150" />
@@ -16,30 +23,6 @@
   <img src="./Gifs/explosion.gif" width="150" />
   <img src="./Gifs/color.gif" width="150" />
 </p>
-
-## 🔭 Overview
-
-This is an open-source library to use with SwiftUI. It allows you to create and customize confetti animations.
-
-- Built with pure SwiftUI.
-- Select from default confetti shapes or inject emojis as text.
-- Configure the radius and angles of the explosion.
-- Trigger animation with one state change multiple times.
-
-## 🧭 Navigation
-
-- [💻 Installation](#-installation)
-  - [Swift Package Manager](#swift-package-manager)
-  - [Manually](#manually)
-- [🧳 Requirements](#-requirements)
-- [🛠 Usage](#-usage)
-  - [Parameters](#parameters)
-  - [Configurator Application With Live Preview](#configurator-application-with-live-preview)
-  - [Examples](#examples)
-- [👨‍💻 Contributors](#-contributors)
-- [✍️ Author](#-author)
-- [📃 License](#-license)
-- [📦 Projects](#-projects)
 
 ## 💻 Installation
 
@@ -74,13 +57,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var counter: Int = 0
+    @State private var trigger: Int = 0
     
     var body: some View {
         Button("🎉") {
-            counter += 1
+            trigger += 1
         }
-        .confettiCannon(counter: $counter)
+        .confettiCannon(trigger: $trigger)
     }
 }
 
@@ -90,7 +73,7 @@ struct ContentView: View {
 
 | parameter          | type           | description                                           | default                                                                                              |
 | ------------------ | -------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| counter            | Binding<Int>   | on any change of this variable triggers the animation | 0                                                                                                    |
+| trigger            | Binding<Int>   | on any change of this variable triggers the animation | 0                                                                                                    |
 | num                | Int            | amount of confettis                                   | 20                                                                                                   |
 | confettis          | [ConfettiType] | list of shapes and text                               | [.shape(.circle), .shape(.triangle), .shape(.square), .shape(.slimRectangle), .shape(.roundedCross)] |
 | colors             | [Color]        | list of colors applied to the default shapes          | [.blue, .red, .green, .yellow, .pink, .purple, .orange]                                              |
@@ -103,76 +86,77 @@ struct ContentView: View {
 | radius             | CGFloat        | explosion radius                                      | 300.0                                                                                                |
 | repetitions        | Int            | number of repetitions for the explosion               | 1                                                                                                    |
 | repetitionInterval | Double         | duration between the repetitions                      | 1.0                                                                                                  |
+| hapticFeedback | Bool         | haptic feedback on each confetti explosion                      | true                                                                                                  |
 
 ### Configurator Application With Live Preview
 
-You can use the configurator app in [demo project here](https://github.com/simibac/ConfettiSwiftUIDemo) to make your desired animation or get inspired by one of the many examples.
+You can use the configurator app in [demo project here](https://github.com/simibac/ConfettiSwiftUIDemo) to configure your desired animation or get inspired by one of the many examples.
   
 <p align="center">
    <img src="./Gifs/configurator.png" width="150" />
    <img src="./Gifs/examples.png" width="150" />
  </p>
 
-### Examples
+### Configuration Examples
 
-#### Color and Size Configuration
+#### Color and Size
 
 <p align="center">
   <img src="./Gifs/color.gif" width="150" />
 </p>
 
 ```swift
-.confettiCannon(counter: $counter, colors: [.red, .black], confettiSize: 20)
+.confettiCannon(trigger: $trigger, colors: [.red, .black], confettiSize: 20)
 ```
 
-#### Repeat Configuration
+#### Repeat
 
 <p align="center">
   <img src="./Gifs/repeat.gif" width="150" />
 </p>
 
 ```swift
-.confettiCannon(counter: $counter, repetitions: 3, repetitionInterval: 0.7)
+.confettiCannon(trigger: $trigger, repetitions: 3, repetitionInterval: 0.7)
 ```
 
-#### Firework Configuration
+#### Firework
 
 <p align="center">
   <img src="./Gifs/explosion.gif" width="150" />
 </p>
 
 ```swift
-.confettiCannon(counter: $counter, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
+.confettiCannon(trigger: $trigger, num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
 ```
 
-#### Emoji Configuration
+#### Emoji
 
 <p align="center">
   <img src="./Gifs/heart.gif" width="150" />
 </p>
 
 ```swift
-.confettiCannon(counter: $counter, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
+.confettiCannon(trigger: $trigger, confettis: [.text("❤️"), .text("💙"), .text("💚"), .text("🧡")])
 ```
 
-#### Endless Configuration
+#### Endless
 
 <p align="center">
   <img src="./Gifs/constant.gif" width="150" />
 </p>
 
 ```swift
-.confettiCannon(counter: $counter, num:1, confettis: [.text("💩")], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
+.confettiCannon(trigger: $trigger, num:1, confettis: [.text("💩")], confettiSize: 20, repetitions: 100, repetitionInterval: 0.1)
 ```
 
-#### Make-it-Rain Configuration
+#### Make-it-Rain
 
 <p align="center">
   <img src="./Gifs/make-it-rain.gif" width="150" />
 </p>
 
 ```swift
-.confettiCannon(counter: $counter, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
+.confettiCannon(trigger: $trigger, num:1, confettis: [.text("💵"), .text("💶"), .text("💷"), .text("💴")], confettiSize: 30, repetitions: 50, repetitionInterval: 0.1)
 ```
 
 
@@ -182,16 +166,12 @@ You can use the configurator app in [demo project here](https://github.com/simib
 </p>
 
 ```swift
-.confettiCannon(counter: $counter8, confettis: [.image("arb"), .image("eth"), .image("btc"), .image("op"), .image("link"), .image("doge")], confettiSize: 20)
+.confettiCannon(trigger: $trigger8, confettis: [.image("arb"), .image("eth"), .image("btc"), .image("op"), .image("link"), .image("doge")], confettiSize: 20)
 ```
 
 ## 👨‍💻 Contributors
 
 All issue reports, feature requests, pull requests and GitHub stars are welcomed and much appreciated.
-
-## ✍️ Author
-
-Simon Bachmann
 
 ## 🔨Support 
 
