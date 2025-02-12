@@ -153,31 +153,71 @@ public struct ConfettiCannon<T: Equatable>: View {
         .onAppear {
             firstAppear = true
         }
-        .onChange(of: trigger) {
-            if firstAppear {
-                for i in 0..<confettiConfig.repetitions {
-                    DispatchQueue.main.asyncAfter(
-                        deadline: .now() + confettiConfig.repetitionInterval
-                            * Double(i)
-                    ) {
-                        animate.append(false)
-                        #if canImport(UIKit)
-                            if confettiConfig.hapticFeedback {
-                                let impactFeedback = UIImpactFeedbackGenerator(
-                                    style: .heavy)
-                                impactFeedback.impactOccurred()
+        #if compiler(>=5.9)
+            if #available(iOS 17.0, macOS 14.0, watchOS 10.0, tvOS 17.0, *) {
+                self.onChange(of: trigger) { oldValue, newValue in
+                    if firstAppear {
+                        for i in 0..<confettiConfig.repetitions {
+                            DispatchQueue.main.asyncAfter(
+                                deadline: .now() + confettiConfig
+                                    .repetitionInterval * Double(i)
+                            ) {
+                                animate.append(false)
+                                #if canImport(UIKit)
+                                    if confettiConfig.hapticFeedback {
+                                        let impactFeedback =
+                                            UIImpactFeedbackGenerator(
+                                                style: .heavy)
+                                        impactFeedback.impactOccurred()
+                                    }
+                                #endif
                             }
-
-                            if confettiConfig.hapticFeedback {
-                                let impactFeedback = UIImpactFeedbackGenerator(
-                                    style: .heavy)
-                                impactFeedback.impactOccurred()
+                        }
+                    }
+                }
+            } else {
+                self.onChange(of: trigger) { value in
+                    if firstAppear {
+                        for i in 0..<confettiConfig.repetitions {
+                            DispatchQueue.main.asyncAfter(
+                                deadline: .now() + confettiConfig
+                                    .repetitionInterval * Double(i)
+                            ) {
+                                animate.append(false)
+                                #if canImport(UIKit)
+                                    if confettiConfig.hapticFeedback {
+                                        let impactFeedback =
+                                            UIImpactFeedbackGenerator(
+                                                style: .heavy)
+                                        impactFeedback.impactOccurred()
+                                    }
+                                #endif
                             }
-                        #endif
+                        }
                     }
                 }
             }
-        }
+        #else
+            self.onChange(of: trigger) { value in
+                if firstAppear {
+                    for i in 0..<confettiConfig.repetitions {
+                        DispatchQueue.main.asyncAfter(
+                            deadline: .now() + confettiConfig.repetitionInterval
+                                * Double(i)
+                        ) {
+                            animate.append(false)
+                            #if canImport(UIKit)
+                                if confettiConfig.hapticFeedback {
+                                    let impactFeedback =
+                                        UIImpactFeedbackGenerator(style: .heavy)
+                                    impactFeedback.impactOccurred()
+                                }
+                            #endif
+                        }
+                    }
+                }
+            }
+        #endif
     }
 }
 
