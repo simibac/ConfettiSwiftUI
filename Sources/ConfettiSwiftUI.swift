@@ -139,7 +139,7 @@ public struct ConfettiCannon<T: Equatable>: View {
                 for i in 0..<confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
-#if canImport(UIKit) && !os(tvOS)
+#if canImport(UIKit) && !os(tvOS) && !os(visionOS)
                         if confettiConfig.hapticFeedback {
                             let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
                             impactFeedback.impactOccurred()
