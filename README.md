@@ -191,6 +191,7 @@ The following projects have integrated ConfettiSwiftUI in their App.
 
 - [Basic Code](https://basiccode.de) available on the [AppStore](https://apps.apple.com/de/app/basiccode/id1562309250)
 - [AnyTracker](https://anytracker.org/) available on the [AppStore](https://apps.apple.com/app/anytracker-track-anything/id6450756953)
+- [Deep Dish Unofficial](https://github.com/MortenGregersen/DeepDishLie) available on the [AppStore](https://apps.apple.com/app/deep-dish-unofficial/id6448354703)
 
 ---
 
