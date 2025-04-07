@@ -61,7 +61,7 @@ public extension View {
 				hapticFeedback: Bool = true
     ) -> some View where T: Equatable {
         ZStack {
-            self
+            self.layoutPriority(1)
             ConfettiCannon(
                 trigger: trigger,
                 num: num,
