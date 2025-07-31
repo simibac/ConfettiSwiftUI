@@ -139,7 +139,7 @@ public struct ConfettiCannon<T: Equatable>: View {
                 for i in 0..<confettiConfig.repetitions{
                     DispatchQueue.main.asyncAfter(deadline: .now() + confettiConfig.repetitionInterval * Double(i)) {
                         animate.append(false)
-#if canImport(UIKit) && !os(tvOS) && !os(visionOS)
+#if canImport(UIKit) && !os(tvOS) && !os(visionOS) && !os(watchOS)
                         if confettiConfig.hapticFeedback {
                             let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
                             impactFeedback.impactOccurred()
@@ -148,6 +148,11 @@ public struct ConfettiCannon<T: Equatable>: View {
                         if confettiConfig.hapticFeedback {
                             let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
                             impactFeedback.impactOccurred()
+                        }
+#elseif os(watchOS)
+                        if confettiConfig.hapticFeedback {
+                            let device = WKInterfaceDevice.current()
+                            device.play(.click)
                         }
 #endif
                     }
