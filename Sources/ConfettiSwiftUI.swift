@@ -25,7 +25,7 @@ public enum ConfettiType:CaseIterable, Equatable {
     case sfSymbol(symbolName: String)
 
     @available(*, deprecated, message: "Use ConfettiType.image(_:) with an Image instead")
-    static func image(_ name: String) -> ConfettiType {
+    public static func image(_ name: String) -> ConfettiType {
         return .image(Image(name))
     }
 
