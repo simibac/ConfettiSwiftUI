@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-public enum ConfettiType:CaseIterable, Hashable {
-    
+public enum ConfettiType:CaseIterable, Equatable {
+
     public enum Shape {
         case circle
         case triangle
@@ -19,27 +19,35 @@ public enum ConfettiType:CaseIterable, Hashable {
 
     case shape(Shape)
     case text(String)
+    case image(Image)
+
+    @available(*, deprecated, message: "Use the Image version of ConfettiType.image(_:) with Image(systemName:) instead")
     case sfSymbol(symbolName: String)
-    case image(String)
-    
-    public var view:AnyView{
+
+    @available(*, deprecated, message: "Use the Image version of ConfettiType.image(_:) instead")
+    static func image(_ name: String) -> ConfettiType {
+        return .image(Image(name))
+    }
+
+    @ViewBuilder
+    public var view: some View {
         switch self {
         case .shape(.square):
-            return AnyView(Rectangle())
+            Rectangle()
         case .shape(.triangle):
-            return AnyView(Triangle())
+            Triangle()
         case .shape(.slimRectangle):
-            return AnyView(SlimRectangle())
+            SlimRectangle()
         case .shape(.roundedCross):
-            return AnyView(RoundedCross())
+            RoundedCross()
         case let .text(text):
-            return AnyView(Text(text))
+            Text(text)
         case .sfSymbol(let symbolName):
-            return AnyView(Image(systemName: symbolName))
+            Image(systemName: symbolName)
         case .image(let image):
-            return AnyView(Image(image).resizable())
+            image.resizable()
         default:
-            return AnyView(Circle())
+            Circle()
         }
     }
     
