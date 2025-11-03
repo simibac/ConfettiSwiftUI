@@ -21,10 +21,10 @@ public enum ConfettiType:CaseIterable, Equatable {
     case text(String)
     case image(Image)
 
-    @available(*, deprecated, message: "Use the Image version of ConfettiType.image(_:) with Image(systemName:) instead")
+    @available(*, deprecated, message: "Use ConfettiType.image(_:) with Image(systemName:) instead")
     case sfSymbol(symbolName: String)
 
-    @available(*, deprecated, message: "Use the Image version of ConfettiType.image(_:) instead")
+    @available(*, deprecated, message: "Use ConfettiType.image(_:) with an Image instead")
     static func image(_ name: String) -> ConfettiType {
         return .image(Image(name))
     }
