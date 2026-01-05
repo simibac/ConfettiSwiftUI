@@ -31,7 +31,7 @@ let package = Package(
         .testTarget(
             name: "ConfettiSwiftUITests",
             dependencies: ["ConfettiSwiftUI"],
-            path: "Tests"),
+            path: "Tests/ConfettiSwiftUITests"),
         
     ]
 )

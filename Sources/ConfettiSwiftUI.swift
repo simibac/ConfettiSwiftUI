@@ -51,7 +51,7 @@ public enum ConfettiType:CaseIterable, Hashable {
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 public struct ConfettiCannon<T: Equatable>: View {
     @Binding var trigger: T
-    @StateObject private var confettiConfig:ConfettiConfig
+    @ObservedObject private var confettiConfig:ConfettiConfig
 
     @State var animate:[Bool] = []
     @State var finishedAnimationCounter = 0
@@ -105,7 +105,7 @@ public struct ConfettiCannon<T: Equatable>: View {
             }
         }
     
-        _confettiConfig = StateObject(wrappedValue: ConfettiConfig(
+        _confettiConfig = ObservedObject(wrappedValue: ConfettiConfig(
             num: num,
             shapes: shapes,
             colors: colors,
@@ -160,7 +160,7 @@ public struct ConfettiCannon<T: Equatable>: View {
 @available(iOS 14.0, macOS 11.0, watchOS 7, tvOS 14.0, *)
 struct ConfettiContainer: View {
     @Binding var finishedAnimationCounter:Int
-    @StateObject var confettiConfig:ConfettiConfig
+    @ObservedObject var confettiConfig:ConfettiConfig
     @State var firstAppear = true
 
     var body: some View{
@@ -184,7 +184,7 @@ struct ConfettiContainer: View {
 struct ConfettiView: View{
     @State var location:CGPoint = CGPoint(x: 0, y: 0)
     @State var opacity:Double = 0.0
-    @StateObject var confettiConfig:ConfettiConfig
+    @ObservedObject var confettiConfig:ConfettiConfig
     
     func getShape() -> AnyView {
         return confettiConfig.shapes.randomElement()!
