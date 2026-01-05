@@ -144,11 +144,6 @@ public struct ConfettiCannon<T: Equatable>: View {
                             let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
                             impactFeedback.impactOccurred()
                         }
-
-                        if confettiConfig.hapticFeedback {
-                            let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
-                            impactFeedback.impactOccurred()
-                        }
 #elseif os(watchOS)
                         if confettiConfig.hapticFeedback {
                             let device = WKInterfaceDevice.current()
