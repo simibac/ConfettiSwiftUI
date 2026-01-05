@@ -32,6 +32,5 @@ let package = Package(
             name: "ConfettiSwiftUITests",
             dependencies: ["ConfettiSwiftUI"],
             path: "Tests/ConfettiSwiftUITests"),
-        
     ]
 )
